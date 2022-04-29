@@ -38,7 +38,7 @@ C_SOURCES += drivers/src/stm8s_clk.c
 # C_SOURCES += drivers/src/stm8s_exti.c
 # C_SOURCES += drivers/src/stm8s_flash.c
 C_SOURCES += drivers/src/stm8s_gpio.c
-# C_SOURCES += drivers/src/stm8s_i2c.c
+C_SOURCES += drivers/src/stm8s_i2c.c
 # C_SOURCES += drivers/src/stm8s_itc.c
 # C_SOURCES += drivers/src/stm8s_iwdg.c
 # C_SOURCES += drivers/src/stm8s_rst.c
@@ -50,7 +50,7 @@ C_SOURCES += drivers/src/stm8s_gpio.c
 # C_SOURCES += drivers/src/stm8s_uart1.c
 # C_SOURCES += drivers/src/stm8s_uart3.c
 # C_SOURCES += drivers/src/stm8s_wwdg.c
-
+ C_SOURCES += drivers/src/stm8s_delay.c
 ########################################
 # Tools
 ########################################
