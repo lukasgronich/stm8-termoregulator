@@ -59,113 +59,113 @@ void main(void)
 
         // If last and current state of CLK are different, then pulse occurred
         // React to only 1 state change to avoid double count
-        // if (currentStateCLK != lastStateCLK && !currentStateCLK)
-        // {
+        if (currentStateCLK != lastStateCLK && !currentStateCLK)
+        {
             
-        //     // If the DT state is different than the CLK state then
-        //     // the encoder is rotating CCW so decrement
-        //     if (GPIO_ReadInputPin(GPIOB, GPIO_PIN_0) != currentStateCLK){  
-        //         if(counter == 58){
-        //             counter-=58;
-        //             procento--;
-        //         }
-        //         else if(counter > 252){
-        //             counter-=1;
-        //             procento--;
-        //         }
-        //         else if(counter == 0){
-        //             counter-=2;
-        //             procento--;
-        //         }
-        //         else{
-        //             procento--;
-        //             counter-=2;
-        //         }   
-        //     }
+            // If the DT state is different than the CLK state then
+            // the encoder is rotating CCW so decrement
+            if (GPIO_ReadInputPin(GPIOB, GPIO_PIN_0) != currentStateCLK){  
+                if(counter == 58){
+                    counter-=58;
+                    procento--;
+                }
+                else if(counter > 252){
+                    counter-=1;
+                    procento--;
+                }
+                else if(counter == 0){
+                    counter-=2;
+                    procento--;
+                }
+                else{
+                    procento--;
+                    counter-=2;
+                }   
+            }
 
-        //     else{
-        //         // Encoder is rotating CW so increment
-        //         if(counter == 0){
-        //             counter+=58;
-        //             procento++;
-        //         } 
-        //         else if(counter > 251){
-        //             if(counter < 254){
-        //                 counter+=1;
-        //                 procento++;
-        //             }
-        //             else{
-        //                 procento++;
-        //                 counter+=2;  
-        //             }
-        //         }   
+            else{
+                // Encoder is rotating CW so increment
+                if(counter == 0){
+                    counter+=58;
+                    procento++;
+                } 
+                else if(counter > 251){
+                    if(counter < 254){
+                        counter+=1;
+                        procento++;
+                    }
+                    else{
+                        procento++;
+                        counter+=2;  
+                    }
+                }   
                 
-        //         else{
-        //             procento++;
-        //             counter+=2;
-        //         }
+                else{
+                    procento++;
+                    counter+=2;
+                }
                     
                 
-        //     }
-        //     if(procento > 101 ){
-        //         procento=100;
-        //     }
-        //     if(procento == 101 ){
-        //         procento=0;
-        //     }
+            }
+            if(procento > 101 ){
+                procento=100;
+            }
+            if(procento == 101 ){
+                procento=0;
+            }
 
-            
+            LCD.clear();
+            LCD.setCursor(0, 0);
+            sprintf(counter_str, "%u", procento);
+            LCD.print(counter_str);
+            LCD.print("%");
+            LCD.setCursor(0, 1);
+            sprintf(counter_str, "%u", counter);
+            LCD.print(counter_str);
 
-        //     if(procento > 19){
-        //         GPIO_WriteLow(GPIOD, GPIO_PIN_6);
-        //         GPIO_WriteLow(GPIOD, GPIO_PIN_5);
-        //     } 
-        //     else{
-        //         GPIO_WriteHigh(GPIOD, GPIO_PIN_6); 
-        //         GPIO_WriteHigh(GPIOD, GPIO_PIN_5);
-        //     }
-        //     if(procento > 39){
-        //         GPIO_WriteLow(GPIOE, GPIO_PIN_0);
-        //         GPIO_WriteLow(GPIOC, GPIO_PIN_1);
-        //     } 
-        //     else{
-        //         GPIO_WriteHigh(GPIOE, GPIO_PIN_0); 
-        //         GPIO_WriteHigh(GPIOC, GPIO_PIN_1);
-        //     }
-        //     if(procento > 59){
-        //         GPIO_WriteLow(GPIOG, GPIO_PIN_0);
-        //         GPIO_WriteLow(GPIOC, GPIO_PIN_2);
-        //     } 
-        //     else{
-        //         GPIO_WriteHigh(GPIOG, GPIO_PIN_0);
-        //         GPIO_WriteHigh(GPIOC, GPIO_PIN_2);
-        //     }
-        //     if(procento > 79){
-        //         GPIO_WriteLow(GPIOC, GPIO_PIN_3);
-        //         GPIO_WriteLow(GPIOE, GPIO_PIN_5);    
-        //     } 
-        //     else{
-        //         GPIO_WriteHigh(GPIOC, GPIO_PIN_3);
-        //         GPIO_WriteHigh(GPIOE, GPIO_PIN_5);
-        //     }
-        //     if(procento > 99){
-        //         GPIO_WriteLow(GPIOD, GPIO_PIN_3);
-        //         GPIO_WriteLow(GPIOC, GPIO_PIN_4); 
-        //     } 
-        //     else{
-        //         GPIO_WriteHigh(GPIOD, GPIO_PIN_3);
-        //         GPIO_WriteHigh(GPIOC, GPIO_PIN_4);
-        //     }
-        // }
+            if(procento > 19){
+                GPIO_WriteLow(GPIOD, GPIO_PIN_6);
+                GPIO_WriteLow(GPIOD, GPIO_PIN_5);
+            } 
+            else{
+                GPIO_WriteHigh(GPIOD, GPIO_PIN_6); 
+                GPIO_WriteHigh(GPIOD, GPIO_PIN_5);
+            }
+            if(procento > 39){
+                GPIO_WriteLow(GPIOE, GPIO_PIN_0);
+                GPIO_WriteLow(GPIOC, GPIO_PIN_1);
+            } 
+            else{
+                GPIO_WriteHigh(GPIOE, GPIO_PIN_0); 
+                GPIO_WriteHigh(GPIOC, GPIO_PIN_1);
+            }
+            if(procento > 59){
+                GPIO_WriteLow(GPIOG, GPIO_PIN_0);
+                GPIO_WriteLow(GPIOC, GPIO_PIN_2);
+            } 
+            else{
+                GPIO_WriteHigh(GPIOG, GPIO_PIN_0);
+                GPIO_WriteHigh(GPIOC, GPIO_PIN_2);
+            }
+            if(procento > 79){
+                GPIO_WriteLow(GPIOC, GPIO_PIN_3);
+                GPIO_WriteLow(GPIOE, GPIO_PIN_5);    
+            } 
+            else{
+                GPIO_WriteHigh(GPIOC, GPIO_PIN_3);
+                GPIO_WriteHigh(GPIOE, GPIO_PIN_5);
+            }
+            if(procento > 99){
+                GPIO_WriteLow(GPIOD, GPIO_PIN_3);
+                GPIO_WriteLow(GPIOC, GPIO_PIN_4); 
+            } 
+            else{
+                GPIO_WriteHigh(GPIOD, GPIO_PIN_3);
+                GPIO_WriteHigh(GPIOC, GPIO_PIN_4);
+            }
+        }
 
-        LCD.clear();
-        LCD.setCursor(0, 0);
-        sprintf(counter_str, "%u", procento);
-        LCD.print(counter_str);
-        LCD.print("%");
-        LCD.setCursor(0, 1);
-        sprintf(counter_str, "%u", counter);
-        LCD.print(counter_str);
+        
 
         counter2 +=1;   
 
